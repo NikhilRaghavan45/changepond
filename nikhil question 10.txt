@@ -1,0 +1,6 @@
+-- 10.1 Join table PEOPLE and ADDRESS, but keep only one address information for each person (we don't mind which record we take for each person). 
+    -- i.e., the joined table should have the same number of rows as table PEOPLE
+ select p.id,p.name,max(a.address) as address,max(a.updatedate) as updatedate from people p left join address a on p.id=a.id group by p.id,p.name;
+-- 10.2 Join table PEOPLE and ADDRESS, but ONLY keep the LATEST address information for each person. 
+    -- i.e., the joined table should have the same number of rows as table PEOPLE
+ select p.id,p.name,a.address,a.updatedate from people p left join(select id,address,updatedate from address a1 where updatedate=(select max(updatedate) from address a2 where a1.id=a2.id))a on p.id=a.id;

@@ -1,0 +1,132 @@
+1)Write a procedure track_character(character)that accepts a character name and returns a result set that contains a list of the movie scenes the character is in.For each movie, track the total number of scenes and the planet where the character appears. The result set should contain the character’s name, the planet name, the movie name, and the sum of the movie scene length for that specific planet in that movie for that character. 
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `track_character`(IN character_name VARCHAR(50))
+BEGIN
+    SELECT
+        TT.CharacterName,
+        TT.PlanetName,
+        TT.Movie,
+        SUM(TT.Time_of_Departure - TT.Time_of_Arrival) AS Scene_Length
+    FROM TimeTable AS TT
+    WHERE TT.CharacterName = character_name
+    GROUP BY TT.CharacterName, TT.PlanetName, TT.Movie;
+END$$
+DELIMITER ;
+2.Write a procedure track_planet(planet)that accepts a planet name and returns a result set that contain the planet name, the movie name, and the number of characters that appear on that planet during that movie. 
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `track_planet`(IN planet_name VARCHAR(50))
+BEGIN
+    SELECT
+        TT.PlanetName,
+        TT.Movie,
+        COUNT(DISTINCT TT.CharacterName) AS Num_Characters
+    FROM TimeTable AS TT
+    WHERE TT.PlanetName = planet_name
+    GROUP BY TT.PlanetName, TT.Movie;
+END$$
+DELIMITER ;
+
+3.Write a function named planet_hopping(character). It accepts a character name and returns the number of planets the character has appeared on. 
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` FUNCTION `planet_hopping`(character_name VARCHAR(50)) RETURNS int
+    READS SQL DATA
+BEGIN
+    DECLARE planet_count INT;
+    SELECT COUNT(DISTINCT PlanetName) INTO planet_count
+    FROM TimeTable
+    WHERE CharacterName = character_name;
+    RETURN planet_count;
+END$$
+DELIMITER ;
+4.Write a function named planet_most_visited(character) that accepts a character name and returns the name of the planet where the character appeared the most ( as measured in scene counts). 
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` FUNCTION `planet_most_visited`(character_name VARCHAR(50)) RETURNS varchar(50) CHARSET utf8mb4
+    READS SQL DATA
+BEGIN
+    DECLARE most_visited_planet VARCHAR(50);
+    SELECT PlanetName INTO most_visited_planet
+    FROM (
+        SELECT PlanetName, COUNT(*) AS visit_count
+        FROM TimeTable
+        WHERE CharacterName = character_name
+        GROUP BY PlanetName
+        ORDER BY visit_count DESC
+        LIMIT 1
+    ) AS subquery;
+    RETURN most_visited_planet;
+END$$
+DELIMITER ;
+
+5.Write a function named home_affiliation_same(character) that accepts a character name and returns TRUE if the character has the same affiliation as his home planet, FALSE if the character has a different affiliation than his home planet or NULL if the home planet or the affiliation is not known. 
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` FUNCTION `home_affiliation_same`(character_name VARCHAR(50)) RETURNS tinyint(1)
+    DETERMINISTIC
+BEGIN
+    DECLARE char_affiliation VARCHAR(50);
+    DECLARE char_homeplanet VARCHAR(50);
+    
+    SELECT Affiliation, Homeworld INTO char_affiliation, char_homeplanet
+    FROM Characters
+    WHERE Name = character_name;
+    
+    IF char_affiliation IS NULL OR char_homeplanet IS NULL THEN
+        RETURN NULL;
+    ELSE
+        RETURN char_affiliation = (SELECT Affiliation FROM Planets WHERE Name = char_homeplanet);
+    END IF;
+END$$
+DELIMITER ;
+
+6.Write a function named planet_in_num_movies that accepts a planet’s name as an argument and returns the number of movies that the planet appeared in. 
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` FUNCTION `planet_in_num_movies`(planet_name VARCHAR(50)) RETURNS int
+    DETERMINISTIC
+BEGIN
+    DECLARE movie_count INT;
+    SELECT COUNT(DISTINCT Movie) INTO movie_count
+    FROM TimeTable
+    WHERE PlanetName = planet_name;
+    RETURN movie_count;
+END$$
+DELIMITER ;
+
+7.Write a procedurenamed character_with_affiliation(affiliation) that accepts an affiliation and returns the character records(all fields associated with the character) with that affiliation. 
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `character_with_affiliation`(IN affiliation_name VARCHAR(50))
+BEGIN
+    SELECT *
+    FROM Characters
+    WHERE Affiliation = affiliation_name;
+END$$
+DELIMITER ;
+8.Write a trigger that updates the field scenes_in_db for the movie records in the Movies table. The field should contain the maximum scene number found in the timetable table for that movie.Call the trigger timetable_after_insert. Insert the following records into the database.Insert records into the timetable table that places 'Chewbacca’, and ‘Princess Leia’ on 'Endor' in scenes 11 through 12 for movie 3. Ensure that the scenesinDB is properly updated for this data. 
+DELIMITER //
+CREATE TRIGGER timetable_after_insert
+AFTER INSERT ON TimeTable
+FOR EACH ROW
+BEGIN
+    UPDATE Movies AS M
+    SET M.scenes_in_db = (
+        SELECT MAX(Time_of_Departure)
+        FROM TimeTable
+        WHERE Movie = NEW.Movie
+    )
+    WHERE M.MovieID = NEW.Movie;
+END //
+DELIMITER ;
+INSERT INTO TimeTable (CharacterName, PlanetName, Movie, Time_of_Arrival, Time_of_Departure)
+VALUES
+ ('Chewbacca', 'Endor', 3, 11, 12),
+ ('Princess Leia', 'Endor', 3, 11, 12);
+9.Create and execute a prepared statement from the SQL workbench that calls track_character with the argument ‘ Princess Leia’. Use a user session variable to pass the argument to the function. 
+
+set @character_name="princess leia";
+prepare stmt from 'call track_character(?)';
+execute stmt using @character_name;
+deallocate prepare stmt;
+
+10.Create and execute a prepared statement that calls planet_in_num_movies() with the argument ‘Bespin’. Once again use a user session variable to pass the argument to the function.
+set @planet_name ='Bespin';
+prepare stmt from 'select planet_in_num_movies(?)';
+execute stmt using @planet_name;
+deallocate prepare stmt;
