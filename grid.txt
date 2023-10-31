@@ -1,0 +1,282 @@
+                                                                            Grid 1
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .grid-container{
+            display: grid;
+            grid-template-columns: 1fr 3fr;
+            grid-template-rows: 1fr 1fr 5fr 1fr;
+            gap: 15px;
+            border-radius: 10px;
+            width: 75%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .header{
+            grid-column: 1/span 2;
+            background-color: #006400;
+            color: white;
+            text-align: center;
+            padding: 10px 20px;
+            border-radius: 10px;
+        }
+        .sidebar{
+            grid-column: 1;
+            grid-row: 2/span 5;
+            background-color: #064b6b;
+            color: white;
+            text-align: center;
+            padding: 10px 20px;
+            border-radius: 10px;
+
+        }
+        .nav{
+            grid-column: 2;
+            background-color: rgb(72, 32, 182);
+            text-align: center;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 10px;
+        }
+
+        .article{
+            grid-column: 2;
+            grid-row: 3/span 4;
+            background-color: rgb(101, 18, 179);
+            text-align: center;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 10px;
+        }
+        .footer{
+            grid-column: 1/span 2;
+            background-color: rgba(0, 0, 0, 0.808);
+            text-align: center;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 10px;
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-container">
+        <div class="header"><b>Header</b></div>
+        <div class="sidebar"><b>Sidebar</b></div>
+        <div class="nav"><b>Nav</b></div>
+        <div class="article"><b>Article</b>            <P>In academic publishing, a paper is an academic work that is usually published in an academic journal. It contains original research results or reviews existing results. Such a paper, also called an article, will only be considered valid if it undergoes a process of peer review by one or more referees (who are academics in the same field) who check that the content of the paper is suitable for publication in the journal. A paper may undergo a series of reviews, revisions, and re-submissions before finally being accepted or rejected for publication</P>
+            <p>This process typically takes several months. Next, there is often a delay of many months (or in some fields, over a year) before an accepted manuscript appears.This is particularly true for the most popular journals where the number of accepted articles often outnumbers the space for printing. Due to this, many academics self-archive a 'preprint' or 'postprint' copy of their paper for free download from their personal or institutional website.Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, tenetur. Eaque</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum nam sapiente facere laboriosam aperiam dolorem. Voluptas in doloremque officia adipisci. Odit aspernatur dolorem similique minus magnam laboriosam, temporibus at ex.
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsa quia, perspiciatis in est culpa repellat. Delectus asperiores dolores rerum quidem laudantium libero adipisci, molestias quod magni voluptatem aliquam quae? Doloremque.
+            </p>
+        </div>
+        <div class="footer"><b>Footer</b></div>
+    </div>
+</body>
+</html>
+       
+
+                                                                              Grid 2
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grid Layout</title>
+  <style>
+    
+.container {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-gap: 4px;
+}
+
+header {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  list-style: none;
+  background-color: #333;
+  color: white;
+  padding: 20px;
+}
+
+.menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu-logo {
+  font-size: large;
+}
+
+.menu-links {
+  display: flex;
+  gap: 50px;
+  justify-content: end;
+  
+}
+
+.menu-links a {
+  text-decoration: none;
+  color: white;
+  padding-right: 60px;
+  
+}
+
+.nav ul {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.nav {
+  grid-column: 2;
+  color: white;
+  background-color: red;
+}
+
+.nav ul li {
+  margin: auto;
+  list-style: none;
+}
+
+article {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+  grid-column: 2;
+  background-color: silver;
+  padding: 10px;
+}
+
+article .card {
+  height: 200px;
+  border: 1px solid #000;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: white;
+}
+
+header, footer {
+  grid-column: 1 / 3;
+}
+
+.sidebar {
+  grid-row: 2;
+  gap: 10px;
+  display: grid;
+  grid-template-rows: repeat(4, 1fr);
+  grid-column: 1;
+  background-color: red;
+}
+
+.sidebar-box {
+  border: 1px solid #000;
+  padding: 60px 20px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.inside-grid {
+  display: grid;
+  grid-template-columns: auto 1fr;
+}
+
+footer{
+    background-color: #333;
+    color: white;
+    text-align: center;
+}
+    
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <li class="menu-logo"><b>Header Logo</b></li>
+      <li class="menu-links">
+        <a href="#">Header Link One</a>
+        <a href="#">Header Link Two</a>
+        <a href="#">Header Link Three</a>
+        <a href="#">Header Link Four</a>
+      </li>
+    </header>
+    <div class="sidebar">
+      <div class="sidebar-box">Placeholder for Image</div>
+      <div class="sidebar-box">Box 1</div>
+      <div class="sidebar-box">Box 2</div>
+      <div class="sidebar-box">Box 3</div>
+    </div>
+    <div class="inside-grid">
+      <nav class="nav">
+        <ul>
+          <li>LATEST ARTICLES</li>
+          <li>MOST VIEWS</li>
+          <li>FEATURED</li>
+        </ul>
+      </nav>
+      <article>
+        <div class="card"><b>Article Title</b>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus sit dolore numquam voluptates adipisci ex quis qui debitis tempore eaque aliquam illum natus nesciunt</p>
+        </div>
+        <div class="card"><b>Article Title</b>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus sit dolore numquam voluptates adipisci ex quis qui debitis tempore eaque aliquam illum natus nesciunt</p>
+        </div>
+        <div class="card"><b>Article Title</b>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus sit dolore numquam voluptates adipisci ex quis qui debitis tempore eaque aliquam illum natus nesciunt</p>
+        </div>
+        <div class="card"><b>Article Title</b>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus sit dolore numquam voluptates adipisci ex quis qui debitis tempore eaque aliquam illum natus nesciunt</p>
+        </div>
+        <div class="card"><b>Article Title</b>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus sit dolore numquam voluptates adipisci ex quis qui debitis tempore eaque aliquam illum natus nesciunt</p>
+        </div>
+        <div class="card"><b>Article Title</b>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus sit dolore numquam voluptates adipisci ex quis qui debitis tempore eaque aliquam illum natus nesciunt</p>
+        </div>
+        <div class="card"><b>Article Title</b>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus sit dolore numquam voluptates adipisci ex quis qui debitis tempore eaque aliquam illum natus nesciunt</p>
+        </div>
+        <div class="card"><b>Article Title</b>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus sit dolore numquam voluptates adipisci ex quis qui debitis tempore eaque aliquam illum natus nesciunt</p>
+        </div>
+        <div class="card"><b>Article Title</b>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus sit dolore numquam voluptates adipisci ex quis qui debitis tempore eaque aliquam illum natus nesciunt</p>
+        </div>
+        <div class="card"><b>Article Title</b>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus sit dolore numquam voluptates adipisci ex quis qui debitis tempore eaque aliquam illum natus nesciunt</p>
+        </div>
+        <div class="card"><b>Article Title</b>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus sit dolore numquam voluptates adipisci ex quis qui debitis tempore eaque aliquam illum natus nesciunt</p>
+        </div>
+        <div class="card"><b>Article Title</b>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus sit dolore numquam voluptates adipisci ex quis qui debitis tempore eaque aliquam illum natus nesciunt</p>
+        </div>
+      </article>
+    </div>
+    <footer>
+        <p>Copyright &copy; The Odin Project 2021</p>
+    </footer>
+  </div>
+</body>
+</html>
+
+
