@@ -33,6 +33,20 @@ class Program
         Console.WriteLine(appreciationontab);
         Console.WriteLine(Int16.MaxValue);
         Console.WriteLine(Int16.MinValue);
+
+        DateTime dt = new DateTime();
+        Console.WriteLine(dt);
+        DateTime newdt = new DateTime(2023,11,1);
+        Console.WriteLine(newdt);
+        DateTime newdtt = new DateTime(2023, 11, 1,16,43,20);
+        Console.WriteLine(newdtt);
+        DateTime newdttt = new DateTime(2023, 11, 1, 16, 43, 20,DateTimeKind.Utc);
+        Console.WriteLine(newdttt);
+        Console.WriteLine(DateTime.Now);
+        Console.WriteLine(DateTime.Today);
+        Console.WriteLine(DateTime.MaxValue);
+        Console.WriteLine(DateTime.MinValue);
+        Console.WriteLine(DateTime.UtcNow);
+
     }
 }
-
