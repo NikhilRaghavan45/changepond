@@ -11,8 +11,34 @@ class Program
         }
 
     }
+
+    enum WeekDays
+    {
+        Monday, //if you want to change the index to start from 1 use Monday=1
+        Tuesday,
+        Wednesday,
+        Thursday,
+        Friday,
+        Saturday,
+        Sunday
+    }
+
+    enum Payment
+    {
+        CC=10,
+        NB=30,
+        UPI=20
+    }
     private static void Main(string[] args)
     {
+        int day = (int)(WeekDays.Tuesday);
+        Console.WriteLine(day);
+        Console.WriteLine(Payment.UPI);
+        Console.WriteLine((int)(Payment.UPI));
+        dynamic gender = 0;
+        gender = "M";
+        gender = true;
+        Console.WriteLine(gender);
         byte radius = 5;
         sbyte miles = -120;
         short area = 32000;
@@ -28,7 +54,7 @@ class Program
         decimal dtom = 1.2e6m;
 
         string fullname = "Nikhil";
-        char gender = 'R';
+        //char gender = 'R';
         String message = "Good Morning";
 
         string appreciation="he is \"Mr.Genious\"";
