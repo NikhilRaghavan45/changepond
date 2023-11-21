@@ -1,5 +1,16 @@
 class Program
 {
+    struct Location
+    {
+        public int longitute;
+        public int latitude;
+        public Location(int longitute,int latitude)
+        {
+            this.longitute = longitute;
+            this.latitude = latitude;
+        }
+
+    }
     private static void Main(string[] args)
     {
         byte radius = 5;
@@ -47,6 +58,17 @@ class Program
         Console.WriteLine(DateTime.MaxValue);
         Console.WriteLine(DateTime.MinValue);
         Console.WriteLine(DateTime.UtcNow);
+        Location cordinate = new Location();
+        cordinate.latitude = 10;
+        cordinate.longitute = 20;
+        Console.WriteLine(cordinate.longitute);
+        Console.WriteLine(cordinate.latitude);
+        Location cordinatel = new Location(30, 40);
+        Console.WriteLine(cordinatel.longitute);
+        Console.WriteLine(cordinatel.latitude);
+
 
     }
 }
+
+
