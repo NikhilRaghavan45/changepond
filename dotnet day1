@@ -1,0 +1,38 @@
+class Program
+{
+    private static void Main(string[] args)
+    {
+        byte radius = 5;
+        sbyte miles = -120;
+        short area = 32000;
+        ushort area1 = 35000;
+        int perimeter;
+        perimeter = 1000000;
+        int hef = 0xf;
+        long distance = 735735737598357637;
+        float pi_value = 3.14f;
+        double aofc = 59.93939393d;
+        decimal longitude = 0.23423423423443m;
+        double dtoomr = 0.20e2;
+        decimal dtom = 1.2e6m;
+
+        string fullname = "Nikhil";
+        char gender = 'R';
+        String message = "Good Morning";
+
+        string appreciation="he is \"Mr.Genious\"";
+        string appreciationonnew = "he is \n \"Mr.Genious\"";
+        string appreciationontab = "he is \t \"Mr.Genious\"";
+
+        string details = $"Mr.{fullname} gender is {gender}";
+        Console.WriteLine(fullname+" "+message);
+        Console.WriteLine("Hello, World!");
+        Console.WriteLine(details);
+        Console.WriteLine(appreciation);
+        Console.WriteLine(appreciationonnew);
+        Console.WriteLine(appreciationontab);
+        Console.WriteLine(Int16.MaxValue);
+        Console.WriteLine(Int16.MinValue);
+    }
+}
+
