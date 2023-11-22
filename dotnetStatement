@@ -1,0 +1,204 @@
+using System.Diagnostics;
+using System.Reflection.Metadata;
+using System.Reflection.Metadata.Ecma335;
+using System.Runtime.CompilerServices;
+
+internal class Program
+{
+    private static void Main(string[] args)
+    {
+        //    Console.WriteLine("enter the side1");
+        //    int s1=Convert.ToInt32(Console.ReadLine());
+        //    Console.WriteLine("enter the side2");
+        //    int s2 = Convert.ToInt32(Console.ReadLine());
+        //    Console.WriteLine("enter the side3");
+        //    int s3 = Convert.ToInt32(Console.ReadLine());
+        //    //statement (if it does not end with ; then it is expression)
+        //    //bool result =(s1 == s2 && s2 == s3);
+        //    //if(result)
+        //    if (s1 == s2 && s2 == s3)
+        //    {
+        //        Console.WriteLine("It is equilateral triangle");
+
+        //    }
+        //    else if (s1 == s2 || s2 == s3 || s1 == s3)
+        //    {
+        //        Console.WriteLine("it is isocelus triangle");
+        //    }
+        //    else
+        //    {
+        //        if ((s1 * s2 == s2 * s2 + s3 * s3) || (s2 * s2 == s1 * s1 + s3 * s3) || (s3 * s3 == s1 * s1 + s2 * s2))
+        //        {
+        //            Console.WriteLine("it is rightangle triangle");
+        //        }
+        //        else
+        //        {
+        //            Console.WriteLine("It is scalene traingle");
+
+        //        }
+        //}
+
+
+        //Console.WriteLine("enter the month: ");
+        //string userInput = Console.ReadLine();
+        //int mon = Convert.ToInt32(userInput);
+        //switch (mon)
+        //{
+        //    case 1:
+        //        Console.WriteLine("January");
+        //        break;
+        //    case 2:
+        //        Console.WriteLine("February");
+        //        break;
+        //    case 3:
+        //        Console.WriteLine("March");
+        //        break;
+        //    case 4:
+        //        Console.WriteLine("April");
+        //        break;
+        //    case 5:
+        //        Console.WriteLine("May");
+        //        break;
+        //    case 6:
+        //        Console.WriteLine("June");
+        //        break;
+        //    case 7:
+        //        Console.WriteLine("July");
+        //        break;
+        //    case 8:
+        //        Console.WriteLine("August");
+        //        break;
+        //    case 9:
+        //        Console.WriteLine("September");
+        //        break;
+        //    case 10:
+        //        Console.WriteLine("October");
+        //        break;
+        //    case 11:
+        //        Console.WriteLine("November");
+        //        break;
+        //    case 12:
+        //        Console.WriteLine("December");
+        //        break;
+        //    default:
+        //        Console.WriteLine("not valid");
+        //        break;
+
+
+
+
+        //}
+
+        //int sum = 0;
+        //Console.WriteLine("enter starting number: ");
+        //int snum=Convert.ToInt32(Console.ReadLine());
+        //Console.WriteLine("enter ending number: ");
+        //int endnum = Convert.ToInt32(Console.ReadLine());
+        //for (int i = snum; i <= endnum; i++)
+        //{
+        //    sum += i;
+        //}
+        //Console.WriteLine("sum of numbers from {0} to {1} ={2}",snum,endnum,sum);
+        //    double[] temp = {102.89,101.90,100,10,99.8,99.7};
+        //    int[] area = new int[5];
+        //    area[0] = 100;
+        //    area[1] = 10;
+        //    area[2] = 90;
+        //    area[3] = 100;
+        //    area[4] = 20;
+
+        //    Console.WriteLine("2nd temperature {0}", temp[1]);
+        //    for(int i= 0; i < area.Length;i++)
+        //    {
+        //        Console.WriteLine("{0} : {1}", i + 1, area[i]);
+        //    }
+        //    foreach(int t in temp)
+        //    {
+        //        Console.WriteLine("Temperature : {0}", t);
+
+        //    }
+        //    Console.WriteLine("Maximum Temperature {0}", temp.Max());
+        //    Console.WriteLine("Minimum Temperature {0}", temp.Min());
+
+        //Console.WriteLine("conversion from\n 1.Area \n 2.Length \n 3.Temperature\"");
+        //string userInput=Console.ReadLine();
+        //int uv=Convert.ToInt32(userInput);
+        //if(uv == 1) {
+        //    Console.WriteLine("1.Convert from square foot to square meter \n 2.Convert from  square meter to square foot");
+        //    string user = Console.ReadLine();
+        //    int u=Convert.ToInt32(user);
+        //    if(u == 1)
+        //    {
+        //        Console.WriteLine("Enter the number: ");
+        //        string us = Console.ReadLine();
+        //        int square_m = Convert.ToInt32(us);
+        //        double square_meter = square_m / 10.764;
+        //        Console.WriteLine(square_meter);
+        //    }else if(u == 2)
+        //    {
+        //        Console.WriteLine("Enter the number: ");
+        //        string us = Console.ReadLine();
+        //        int square_f = Convert.ToInt32(us);
+        //        double square_foot = square_f * 10.764;
+        //        Console.WriteLine(square_foot);
+
+        //    }
+
+
+
+
+
+        //}else if (uv == 2)
+        //{
+        //    Console.WriteLine("1.Convert from inch to  meter");
+        //    string user = Console.ReadLine();
+        //    int u = Convert.ToInt32(user);
+        //    if (u ==1)
+        //    {
+        //        Console.WriteLine("Enter the number: ");
+        //        string us = Console.ReadLine();
+        //        int m = Convert.ToInt32(us);
+        //        double meter = m / 39.37;
+        //        Console.WriteLine(meter);
+        //    }else if(u==2){
+        //            Console.WriteLine("Enter the number: ");
+        //            string us = Console.ReadLine();
+        //            int m = Convert.ToInt32(us);
+        //            double inch = m * 39.37;
+        //            Console.WriteLine(inch);
+
+        //    }
+
+
+        //}
+        //else
+        //{
+        //    Console.WriteLine("1.Convert from celsius to  fahrenheit \n 2.convert from fahrenheit to celsius");
+        //    string user = Console.ReadLine();
+        //    int u = Convert.ToInt32(user);
+        //    if (u == 1)
+        //    {
+        //        Console.WriteLine("Enter the number: ");
+        //        string us = Console.ReadLine();
+        //        int m = Convert.ToInt32(us);
+        //        double fahrenheit = (m * 9 / 5) +32;
+        //        Console.WriteLine(fahrenheit);
+        //    }
+        //    else if (u == 2)
+        //    {
+        //        Console.WriteLine("Enter the number: ");
+        //        string us = Console.ReadLine();
+        //        int m = Convert.ToInt32(us);
+        //        double celsius = (m - 32) * 5 / 9;
+        //        Console.WriteLine(celsius);
+
+        //    }
+
+
+        //}
+
+
+
+    }
+
+}
