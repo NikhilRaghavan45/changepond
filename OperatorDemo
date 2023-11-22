@@ -1,0 +1,57 @@
+
+internal class Program
+{
+    private static void Main(string[] args)
+    {  //arithmetic operator
+        //int s1 = 10;
+        //int s2 = 10;
+        //int sidetotal = s1 + s2;
+        //Console.WriteLine("Total of 2 sides "+sidetotal);
+        //int margin=2;
+        //int stowom = sidetotal - margin;
+        //Console.WriteLine("side total after removing margin: "+stowom);
+        //int radius = 5;
+        //double aoc = 3.14 * radius * radius;
+        //Console.WriteLine("area of circle with radius" + radius + " is " + aoc);
+        //double aofsc = aoc / 2;
+        //Console.WriteLine("Area of semicircle with radius " + radius + " is " + aofsc);
+        //int remain = stowom % 4;
+        //Console.WriteLine("remaining part after spliting side total in 4 parts is " + remain);
+
+
+        //int counter = -1;
+        //Console.WriteLine("original: "+counter);
+        //Console.WriteLine("post increment: " + counter++);
+        //Console.WriteLine("pre increment: " + ++counter);
+        //Console.WriteLine("post decrement: " + counter--);
+        //Console.WriteLine("pre decrement: " + --counter);
+
+
+        //string str = null;//null coalescing
+        //Console.WriteLine(str ??= "Good Afternoon");
+
+
+
+        //comparison operator
+        //int s1 = 10;
+        //int s2 = 20;
+        //int s3 = 30;
+        //Console.WriteLine(s1>s2);
+        //Console.WriteLine(s2 < s3);
+        //Console.WriteLine(s2+s1 == s3);
+        //Console.WriteLine(s2 + s3 != s3);
+        //Console.WriteLine(s1 < s2 && s2 < s3);
+        //Console.WriteLine(s1 < s2 || s2 > s1);
+        //Console.WriteLine(!(s2 < s3));
+
+        //int s1 = 10;
+        //int s2= 20;
+        //int s3= 30;
+        //string result = (s1 < s2 && s2 < s3 ? "s1 is smallest " : "s1 is not smallest");
+        //Console.WriteLine(result);
+
+
+
+
+    }
+}
