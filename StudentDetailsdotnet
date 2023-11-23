@@ -1,0 +1,107 @@
+namespace StudentDetails
+{
+    class Student
+    {
+        string sname;
+        int sid;
+        double javamark;
+        double webmark;
+        double dbmark;
+        double totalmark;
+        double percentage;
+
+        public void setSname(string sname)
+        {
+            this.sname = sname;
+        }
+
+        public void setSid(int sid)
+        {
+            this.sid = sid;
+        }
+
+        public void setJavamark(double javamark)
+        {
+            this.javamark = javamark;
+        }
+
+        public void setWebmark(double webmark)
+        {
+            this.webmark = webmark;
+        }
+
+        public void setDbmark(double dbmark)
+        {
+            this.dbmark = dbmark;
+        }
+
+        private void calculateTotalMarks()
+        {
+            this.totalmark = this.javamark + this.webmark + this.dbmark;
+        }
+
+        private void calculatePercetage()
+        {
+            //
+        }
+
+        public string getStudentDetails(string filter)
+        {
+            return "Sname: " + this.sname;
+        }
+
+        public string getStudentDetails(int filter)
+        {
+            this.sid = filter;
+            return "Sid: " + this.sid;
+        }
+
+        public string getJavaDetails(double filter)
+        {
+            this.javamark = filter;
+            return "Javamark: " + this.javamark;
+        }
+
+        public string getWebDetails(double filter)
+        {
+            this.webmark = filter;
+            return "Webmark: " + this.webmark;
+        }
+
+        public string getDbDetails(double filter)
+        {
+            this.dbmark = filter;
+            return "Dbmark: " + this.dbmark;
+        }
+
+        public string getTotalMarks()
+        {
+            calculateTotalMarks();
+            return "TotalMarks: " + this.totalmark;
+        }
+
+        public void getStudentMarkSheet()
+        {
+            Console.WriteLine("Sname: " + this.sname);
+            Console.WriteLine("Sid: " + this.sid);
+            Console.WriteLine("Javamark: " + this.javamark);
+            Console.WriteLine("Webmark: " + this.webmark);
+            Console.WriteLine("Dbmark: " + this.dbmark);
+            Console.WriteLine(getTotalMarks());
+        }
+    }
+
+    class Program
+    {
+        private static void Main(string[] args)
+        {
+            Student s = new Student();
+            s.setSname("Nikhil");
+            s.setSid(1);
+            s.setJavamark(80);
+            s.setWebmark(90);
+            s.setDbmark(100);
+            s.getStudentMarkSheet();
+        }
+    }
+}
