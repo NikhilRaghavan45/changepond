@@ -40,9 +40,39 @@ namespace StudentDetails
             this.totalmark = this.javamark + this.webmark + this.dbmark;
         }
 
-        private void calculatePercetage()
+        private void calculatePercentage()
         {
-            //
+            this.percentage = (this.totalmark / 300) * 100;
+        }
+
+        public string GetBatch()
+        {
+           
+            return GetBatchString();
+        }
+
+        private string GetBatchString()
+        {
+            if (this.percentage >= 75)
+            {
+                return "Batch: Platinum";
+            }
+            else if (this.percentage >= 65)
+            {
+                return "Batch: Gold";
+            }
+            else if (this.percentage >= 55)
+            {
+                return "Batch: Silver";
+            }
+            else if (this.percentage >= 45)
+            {
+                return "Batch: Bronze";
+            }
+            else
+            {
+                return "Batch: Reattempt";
+            }
         }
 
         public string getStudentDetails(string filter)
@@ -80,6 +110,12 @@ namespace StudentDetails
             return "TotalMarks: " + this.totalmark;
         }
 
+        public string getPercentage()
+        {
+            calculatePercentage();
+            return "Percentage: " + this.percentage;
+        }
+
         public void getStudentMarkSheet()
         {
             Console.WriteLine("Sname: " + this.sname);
@@ -88,6 +124,8 @@ namespace StudentDetails
             Console.WriteLine("Webmark: " + this.webmark);
             Console.WriteLine("Dbmark: " + this.dbmark);
             Console.WriteLine(getTotalMarks());
+            Console.WriteLine(getPercentage());
+            Console.WriteLine(GetBatch());
         }
     }
 
@@ -98,10 +136,11 @@ namespace StudentDetails
             Student s = new Student();
             s.setSname("Nikhil");
             s.setSid(1);
-            s.setJavamark(80);
-            s.setWebmark(90);
-            s.setDbmark(100);
+            s.setJavamark(30);
+            s.setWebmark(40);
+            s.setDbmark(70);
             s.getStudentMarkSheet();
+
         }
     }
 }
