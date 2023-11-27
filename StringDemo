@@ -1,0 +1,33 @@
+internal class Program
+{
+    private static void Main(string[] args)
+    {
+        string language = "C# Programming";
+        string spec = "object Oriented Programming";
+        string spec2 = "StronglyTyped";
+        Console.WriteLine(language.Length);
+        Console.WriteLine(language+" is a "+spec);
+        Console.WriteLine(string.Concat(language, " ", spec));
+        Console.WriteLine(spec2.Equals("StronglyTyped"));
+        string[] specs = spec.Split(" ");
+        Console.WriteLine(specs[0]);
+        Console.WriteLine(string.Join("#", specs));
+        Console.WriteLine(spec.Replace("Oriented","Based"));
+        Console.WriteLine(spec.Contains("Oriented"));
+        Console.WriteLine(spec.IndexOf("Oriented"));
+        string padstr = language.PadLeft(20, '$');
+        Console.WriteLine(padstr);
+        string padstrr = language.PadRight(20, '$');
+        Console.WriteLine(padstrr);
+        Console.WriteLine(language.Substring(3, 5));
+        Console.WriteLine(language.Remove(3));
+        Console.WriteLine(language.Remove(3,5));
+        Console.WriteLine(spec.LastIndexOf("Oriented"));
+        Console.WriteLine(spec.ToUpper());
+        Console.WriteLine(spec.ToLower());
+        Console.WriteLine(spec.EndsWith("Programming"));
+        string spec3 = " object Oriented Programming ";
+        Console.WriteLine(spec3.Trim());
+
+    }
+}
