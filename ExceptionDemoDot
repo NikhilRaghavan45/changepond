@@ -1,0 +1,122 @@
+﻿class InsufficientFundsException : InvalidOperationException
+{
+    public InsufficientFundsException() { }
+    public InsufficientFundsException(string message):base(message) { }
+    public InsufficientFundsException(string message, Exception innerException):base(message, innerException) { }
+}
+
+class BankAccount
+{
+    public int AccountNumber { get; set; }
+    public string AccountName { get; set; }
+    public double CurrentBalance { get; set; }
+}
+class FundTransfer
+{
+    public void Transfer(BankAccount sourceaccount, BankAccount destinationaccount,double amount)
+    {
+        try
+        {
+            if (amount < 0 || amount > 10000)
+            {
+                throw new ArgumentOutOfRangeException("amount", 10000, "for fund transfer the value of 'amount; should be between 1 to 10000");
+                
+            }
+            if(amount > sourceaccount.CurrentBalance)
+            {
+                throw new InsufficientFundsException($"Insufficient balance in the {sourceaccount.AccountName}, Available Balance is {sourceaccount.CurrentBalance}");
+            }
+            sourceaccount.CurrentBalance -= amount;
+        }
+        catch(NullReferenceException ex) {
+            throw new ArgumentNullException("you have supplied null value to sourceaccount parameter ", ex);
+        }
+        try
+        {
+            destinationaccount.CurrentBalance += amount;
+        }
+        catch (NullReferenceException ex)
+        {
+            throw new ArgumentNullException("you have supplied null value to destinationaccount parameter ", ex);
+        }
+    }
+}
+internal class Program
+{
+
+
+    private static void Main(string[] args)
+    {
+        try
+        {
+            BankAccount paragaccount = new BankAccount() { AccountNumber = 101, AccountName = "Parag Joshi", CurrentBalance = 9000};
+            BankAccount prachiaccount = new BankAccount() { AccountNumber = 102, AccountName = "Prachi Joshi", CurrentBalance = 200000 };
+            BankAccount Araoaccount = null;
+
+            FundTransfer fundTransfer = new FundTransfer();
+           fundTransfer.Transfer(paragaccount, prachiaccount, 9001);
+          //  fundTransfer.Transfer(paragaccount, Araoaccount, 10000);
+            Console.WriteLine("fund transferred successfully");
+        }
+        catch (ArgumentNullException ex)
+        {
+           Console.WriteLine(ex.Message);
+         //   Console.WriteLine(ex.InnerException.Message);
+        }
+        catch (InsufficientFundsException ex)
+        {
+            Console.WriteLine(ex.Message);
+            Console.WriteLine(ex.StackTrace);
+        }
+    }
+       //    string[] colors = { "Red", "Blue", "Green", "Pink" };
+        //    try
+        //    {
+        //        int num = 10;
+        //        //Console.WriteLine(num / 0);
+        //        Console.WriteLine(colors[3]);
+        //    } catch(IndexOutOfRangeException e) { Console.WriteLine("An exception occured " + e.Message); }
+        //      catch(DivideByZeroException e) { Console.WriteLine("An exception Occured " + e.Message); }
+        //      finally { Console.WriteLine("inside finally"); }
+        //}
+        //public int factorial(int num)
+        //{
+        //    //termination condition
+        //    if(num==0) return 1;
+        //    else
+        //    {
+        //        //recursive call
+        //        return num*factorial(num-1);
+        //    }
+        //}
+        //private static void Main(string[] args)
+        //{
+        //    int fact, num;
+        //    Console.WriteLine("Enter the number:");
+        //    num = Convert.ToInt32(Console.ReadLine());
+        //    Program factobj = new Program();
+        //    fact = factobj.factorial(num);
+        //    Console.WriteLine("Factorial of {0} is {1}", num, fact);
+        //    //string language = "C# Programming";
+        //    //string spec = "Object Oriented Programming";
+        //    //string spec2 = "StronglyTyped";
+        //    //Console.WriteLine(language.Length) ;
+        //    //Console.WriteLine(language + " is a " + spec) ;
+        //    //Console.WriteLine(String.Concat(language," ",spec));
+        //    //Console.WriteLine(spec2.Equals("StronglyTyped")) ;
+        //    //string[] specs = spec.Split(" ");
+        //    //Console.WriteLine(specs[0]) ;
+        //    //Console.WriteLine(String.Join(" ",specs));
+        //    //Console.WriteLine(spec.Replace("Oriented","Based"));
+        //    //Console.WriteLine(spec.Contains("Oriented"));
+        //    //Console.WriteLine(spec.IndexOf("Oriented"));
+        //    //string padstr = language.PadLeft(20,'$');
+        //    //Console.WriteLine(padstr);
+        //    //string padstr1 = language.PadRight(20, '$');
+        //    //Console.WriteLine(padstr1);
+        //    //Console.WriteLine(language.Substring(3,5));
+        //    //Console.WriteLine(language.Remove(3));
+        //    //Console.WriteLine(language.Remove(3,5));
+        //}
+    }
+
