@@ -1,0 +1,60 @@
+
+using System.Collections.Generic;
+
+class Product
+{
+    public string Name { get; set; }
+    public int Price { get; set; }
+
+    public Product(string name, int price)
+    {
+        Name = name;
+        Price = price;
+    }
+}
+
+class ShoppingCart
+{
+    public string Name { get; set; }    
+    public int Price { get; set; }
+
+    public int Quantity { get; set;}
+
+    public ShoppingCart(string name, int price,int quantity)
+    {
+        Name = name;
+        Price = price;
+        Quantity = quantity;
+    }
+}
+
+internal class Program
+{
+    private static void Main(string[] args)
+    {
+        do
+        {
+            Console.WriteLine("Menu \n 1.List the Products \n 2.Add Product to the cart \n 3.Update Product \n 4.Remove Product \n 5.Exit and Generate Bill \n 6.Clear Cart");
+            int user = Convert.ToInt32(Console.ReadLine());
+            if (user == 1)
+            {
+                ShoppingCart u1 = new ShoppingCart("Butter", 80, 2);
+                ShoppingCart u2 = new ShoppingCart("Maggi", 12, 2);
+                ShoppingCart u3 = new ShoppingCart("Toothpaste", 60, 2);
+
+                List<ShoppingCart> users = new List<ShoppingCart>();
+                users.Add(u1);
+                users.Add(u2);
+                users.Add(u3);
+
+                foreach (ShoppingCart u in users)
+                {
+                    Console.WriteLine(u.Name + "   " + u.Price + " " + u.Quantity);
+                }
+
+            }
+        } while (true);
+
+    }
+        
+}
