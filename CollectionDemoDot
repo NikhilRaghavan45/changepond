@@ -1,0 +1,73 @@
+﻿using System.Collections.Generic;
+
+class User
+{
+    public int id { get; set; }
+    public string Name { get; set; }
+    public string Email { get; set; }
+
+    public User(int id, string name, string email)
+    {
+        this.id = id;
+        Name = name;
+        Email = email;
+    }
+}
+internal class Program
+{
+    private static void Main(string[] args)
+    {
+        User u1 = new User(1, "Parag", "para@gmail.com");
+        User u2 = new User(2, "Santosh", "santa@gmail.com");
+        User u3 = new User(3, "Lakshmi", "lax@gmail.com");
+
+        List<User> users = new List<User>();
+        users.Add(u1);
+        users.Add(u2);
+        users.Add(u3);
+
+        foreach (User u in users)
+        {
+            Console.WriteLine(u.id + " " + u.Name + " " + u.Email);
+        }
+
+
+
+       // List<int> scores = new List<int>() { 100,120,140,115,0};
+       // //Console.WriteLine(scores[0]);
+       // for (int i = 0; i < scores.Count; i++)
+       // {
+       //     Console.WriteLine((i + 1) + ". " + scores[i]);
+       // }
+       // //Console.WriteLine("Add the score to the list: ");
+       // //int score = Convert.ToInt32(Console.ReadLine());
+       // //scores.Add(score); //Add the element in the last position
+
+       // //scores.Insert(0, 200); // Insert the element at the first position
+
+       // List <int> iplscores = new List<int>() {50,50,20};
+       // //  scores.AddRange(iplscores);
+       // scores.InsertRange(3,iplscores);
+
+       // foreach (int i in scores)
+       // {
+       //     Console.WriteLine(i);
+       // }
+
+       // scores.Remove(100); //Removal of element with the value
+       // scores.RemoveAt(scores.Count - 1); //Removal of element with the index
+       // //        scores.RemoveAll(scores.Contains);
+       // //scores.Clear();
+       // Console.WriteLine(scores.Contains(50));
+       // scores.Reverse();
+       // scores.Sort();
+       ////Console.WriteLine();
+       // Console.WriteLine("After Removal");
+       // foreach (int i in scores)
+       // {
+       //     Console.WriteLine(i);
+       // }
+
+        //Console.ReadKey();
+    }
+}
