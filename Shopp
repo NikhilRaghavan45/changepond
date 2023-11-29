@@ -10,14 +10,21 @@ class Program
         public double Price { get; set; }
     }
 
+    class ShoppingCartItem
+    {
+        public string Name { get; set; }
+        public double Price { get; set; }
+        public int Quantity { get; set; }
+    }
+
     static List<Product> products = new List<Product>()
     {
-        new Product { Name = "Product1", Price = 10.0 },
-        new Product { Name = "Product2", Price = 20.0 },
-        new Product { Name = "Product3", Price = 30.0 }
+        new Product { Name = "Biscuit", Price = 10.0 },
+        new Product { Name = "Ghee", Price = 20.0 },
+        new Product { Name = "Maggi", Price = 30.0 }
     };
 
-    static List<(string productName, int quantity)> cart = new List<(string, int)>();
+    static List<ShoppingCartItem> cart = new List<ShoppingCartItem>();
 
     static void Main(string[] args)
     {
@@ -88,23 +95,22 @@ class Program
                     throw new ArgumentOutOfRangeException("quantity", "Quantity should be greater than 0.");
                 }
 
-                var cartItem = cart.FirstOrDefault(item =>
-                    item.productName.Equals(productName, StringComparison.OrdinalIgnoreCase));
+                ShoppingCartItem cartItem = cart.FirstOrDefault(item =>item.Name.Equals(productName, StringComparison.OrdinalIgnoreCase));
 
-                if (cartItem.productName != null)
+                if (cartItem != null)
                 {
-                    cartItem.quantity += quantity;
+                    cartItem.Quantity += quantity;
                 }
                 else
                 {
-                    cart.Add((productName, quantity));
+                    cart.Add(new ShoppingCartItem { Name = product.Name, Price = product.Price, Quantity = quantity });
                 }
 
                 Console.WriteLine("Product added to cart successfully.");
             }
             else
             {
-                Console.WriteLine("Invalid product name. Please try again.");
+                throw new InvalidOperationException("Invalid product name. Product not found in the list of available products.");
             }
         }
         catch (FormatException)
@@ -112,6 +118,10 @@ class Program
             Console.WriteLine("Invalid input. Please enter a valid number for quantity.");
         }
         catch (ArgumentOutOfRangeException ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+        catch (InvalidOperationException ex)
         {
             Console.WriteLine(ex.Message);
         }
@@ -125,9 +135,9 @@ class Program
             string productName = Console.ReadLine();
 
             var cartItem = cart.FirstOrDefault(item =>
-                item.productName.Equals(productName, StringComparison.OrdinalIgnoreCase));
+                item.Name.Equals(productName, StringComparison.OrdinalIgnoreCase));
 
-            if (cartItem.productName != null)
+            if (cartItem != null)
             {
                 Console.Write("Enter the new quantity: ");
                 int quantity = int.Parse(Console.ReadLine());
@@ -137,13 +147,13 @@ class Program
                     throw new ArgumentOutOfRangeException("quantity", "Quantity should be greater than 0.");
                 }
 
-                cartItem.quantity = quantity;
+                cartItem.Quantity = quantity;
 
                 Console.WriteLine("Cart updated successfully.");
             }
             else
             {
-                Console.WriteLine("Product not found in the cart. Please add it first.");
+                throw new InvalidOperationException("Product not found in the cart. Please add it first.");
             }
         }
         catch (FormatException)
@@ -154,7 +164,12 @@ class Program
         {
             Console.WriteLine(ex.Message);
         }
+        catch (InvalidOperationException ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
     }
+
 
     static void RemoveFromCart()
     {
@@ -164,9 +179,9 @@ class Program
             string productName = Console.ReadLine();
 
             var cartItem = cart.FirstOrDefault(item =>
-                item.productName.Equals(productName, StringComparison.OrdinalIgnoreCase));
+                item.Name.Equals(productName, StringComparison.OrdinalIgnoreCase));
 
-            if (cartItem.productName != null)
+            if (cartItem.Name != null)
             {
                 cart.Remove(cartItem);
                 Console.WriteLine("Product removed from cart successfully.");
@@ -182,6 +197,9 @@ class Program
         }
     }
 
+
+
+
     static void GenerateBill()
     {
         double totalAmount = 0;
@@ -196,11 +214,9 @@ class Program
         int counter = 1;
         foreach (var item in cart)
         {
-            Product product = products.First(p =>
-                p.Name.Equals(item.productName, StringComparison.OrdinalIgnoreCase));
-            double totalPrice = product.Price * item.quantity;
+            double totalPrice = item.Price * item.Quantity;
 
-            Console.WriteLine($"{counter}\t{item.productName}\t{item.quantity}\t\t${product.Price}\t\t${totalPrice}");
+            Console.WriteLine($"{counter}\t{item.Name}\t{item.Quantity}\t\t${item.Price}\t\t${totalPrice}");
 
             totalAmount += totalPrice;
             counter++;
@@ -211,11 +227,11 @@ class Program
         Console.WriteLine("***************************************************************************************");
         Console.WriteLine("Thank you for shopping with us!");
     }
-
-
     static void ClearCart()
     {
         cart.Clear();
         Console.WriteLine("Cart cleared successfully.");
     }
+
+
 }
