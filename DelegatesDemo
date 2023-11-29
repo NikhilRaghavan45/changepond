@@ -1,0 +1,106 @@
+using System.Runtime.CompilerServices;
+
+public delegate void userdelegateTypename(string username,string message);
+
+
+class PublisherClass
+{
+    public event userdelegateTypename myevent;
+
+    public void raiseevent(string username, string message)
+    {
+        myevent(username,message);
+    }
+}
+
+
+
+class subscriberClass
+{
+    public void subscribermethod(string username,string message)
+    {
+        Console.WriteLine("Hello to " + username+","+message);
+
+    }
+
+    public void connect()
+    {
+        PublisherClass pc=new PublisherClass();
+        pc.myevent += subscribermethod;
+        pc.raiseevent("Scott", "How are you doing?");
+        pc.raiseevent("Alice", "Can you come for coffee");
+    }
+}
+
+
+
+
+class SingleClassDelegate
+{
+    public void Add(int a,int b)
+    {
+        int c = a + b;  
+        Console.WriteLine(" Sum is "+c);
+    }
+
+    public void Sub(int a,int b)
+    {
+        int c=a - b;
+        Console.WriteLine(" Sub is " + c);
+    }
+
+    
+}
+
+public delegate void addDelegateType(int a, int b);//create the delegate type
+
+public class Metronome
+{
+    public event TickHandler Tick;
+    public EventArgs e = null;
+    public delegate void TickHandler(Metronome m, EventArgs e);
+
+    public void start()
+    {
+        System.Threading.Thread.Sleep(1000);
+        if (Tick != null)
+        {
+            Tick(this, e);
+        }
+    }
+}
+
+
+public class Listener
+{
+    public void Subscribe(Metronome metronome)
+    {
+        metronome.Tick += new Metronome.TickHandler(HeardIt);
+    }
+
+    public void HeardIt(Metronome m,EventArgs e)
+    {
+        System.Console.WriteLine("Heard IT");
+    }
+}
+
+internal class Program
+{
+    private static void Main(string[] args)
+    {
+        //subscriberClass sc = new subscriberClass();
+        //sc.connect();
+        //addDelegateType d;
+        Metronome metronome = new Metronome();
+        Listener listener = new Listener();
+        listener.Subscribe(metronome);
+        metronome.start();
+
+        //SingleClassDelegate singleClassDelegate=new SingleClassDelegate();
+        //d=singleClassDelegate.Add;
+        //d+= singleClassDelegate.Sub;
+        //d(20, 10);
+
+       
+    }
+}
