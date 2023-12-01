@@ -1,0 +1,14 @@
+C:\dotnettraining\ExampleOnetoOne\ExampleOnetoOne\bin\Debug\net6.0\ExampleOnetoOne.exe
+C:\dotnettraining\ExampleOnetoOne\ExampleOnetoOne\bin\Debug\net6.0\ExampleOnetoOne.deps.json
+C:\dotnettraining\ExampleOnetoOne\ExampleOnetoOne\bin\Debug\net6.0\ExampleOnetoOne.runtimeconfig.json
+C:\dotnettraining\ExampleOnetoOne\ExampleOnetoOne\bin\Debug\net6.0\ExampleOnetoOne.dll
+C:\dotnettraining\ExampleOnetoOne\ExampleOnetoOne\bin\Debug\net6.0\ExampleOnetoOne.pdb
+C:\dotnettraining\ExampleOnetoOne\ExampleOnetoOne\obj\Debug\net6.0\ExampleOnetoOne.GeneratedMSBuildEditorConfig.editorconfig
+C:\dotnettraining\ExampleOnetoOne\ExampleOnetoOne\obj\Debug\net6.0\ExampleOnetoOne.AssemblyInfoInputs.cache
+C:\dotnettraining\ExampleOnetoOne\ExampleOnetoOne\obj\Debug\net6.0\ExampleOnetoOne.AssemblyInfo.cs
+C:\dotnettraining\ExampleOnetoOne\ExampleOnetoOne\obj\Debug\net6.0\ExampleOnetoOne.csproj.CoreCompileInputs.cache
+C:\dotnettraining\ExampleOnetoOne\ExampleOnetoOne\obj\Debug\net6.0\ExampleOnetoOne.dll
+C:\dotnettraining\ExampleOnetoOne\ExampleOnetoOne\obj\Debug\net6.0\refint\ExampleOnetoOne.dll
+C:\dotnettraining\ExampleOnetoOne\ExampleOnetoOne\obj\Debug\net6.0\ExampleOnetoOne.pdb
+C:\dotnettraining\ExampleOnetoOne\ExampleOnetoOne\obj\Debug\net6.0\ExampleOnetoOne.genruntimeconfig.cache
+C:\dotnettraining\ExampleOnetoOne\ExampleOnetoOne\obj\Debug\net6.0\ref\ExampleOnetoOne.dll
