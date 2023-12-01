@@ -1,0 +1,14 @@
+C:\dotnettraining\ObjectRelations\ObjectRelations\bin\Debug\net6.0\ObjectRelations.exe
+C:\dotnettraining\ObjectRelations\ObjectRelations\bin\Debug\net6.0\ObjectRelations.deps.json
+C:\dotnettraining\ObjectRelations\ObjectRelations\bin\Debug\net6.0\ObjectRelations.runtimeconfig.json
+C:\dotnettraining\ObjectRelations\ObjectRelations\bin\Debug\net6.0\ObjectRelations.dll
+C:\dotnettraining\ObjectRelations\ObjectRelations\bin\Debug\net6.0\ObjectRelations.pdb
+C:\dotnettraining\ObjectRelations\ObjectRelations\obj\Debug\net6.0\ObjectRelations.GeneratedMSBuildEditorConfig.editorconfig
+C:\dotnettraining\ObjectRelations\ObjectRelations\obj\Debug\net6.0\ObjectRelations.AssemblyInfoInputs.cache
+C:\dotnettraining\ObjectRelations\ObjectRelations\obj\Debug\net6.0\ObjectRelations.AssemblyInfo.cs
+C:\dotnettraining\ObjectRelations\ObjectRelations\obj\Debug\net6.0\ObjectRelations.csproj.CoreCompileInputs.cache
+C:\dotnettraining\ObjectRelations\ObjectRelations\obj\Debug\net6.0\ObjectRelations.dll
+C:\dotnettraining\ObjectRelations\ObjectRelations\obj\Debug\net6.0\refint\ObjectRelations.dll
+C:\dotnettraining\ObjectRelations\ObjectRelations\obj\Debug\net6.0\ObjectRelations.pdb
+C:\dotnettraining\ObjectRelations\ObjectRelations\obj\Debug\net6.0\ObjectRelations.genruntimeconfig.cache
+C:\dotnettraining\ObjectRelations\ObjectRelations\obj\Debug\net6.0\ref\ObjectRelations.dll
