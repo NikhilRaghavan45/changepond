@@ -1,0 +1,14 @@
+C:\dotnettraining\ExampleDemo\ExampleDemo\obj\Debug\net6.0\ExampleDemo.GeneratedMSBuildEditorConfig.editorconfig
+C:\dotnettraining\ExampleDemo\ExampleDemo\obj\Debug\net6.0\ExampleDemo.AssemblyInfoInputs.cache
+C:\dotnettraining\ExampleDemo\ExampleDemo\obj\Debug\net6.0\ExampleDemo.AssemblyInfo.cs
+C:\dotnettraining\ExampleDemo\ExampleDemo\obj\Debug\net6.0\ExampleDemo.csproj.CoreCompileInputs.cache
+C:\dotnettraining\ExampleDemo\ExampleDemo\bin\Debug\net6.0\ExampleDemo.exe
+C:\dotnettraining\ExampleDemo\ExampleDemo\bin\Debug\net6.0\ExampleDemo.deps.json
+C:\dotnettraining\ExampleDemo\ExampleDemo\bin\Debug\net6.0\ExampleDemo.runtimeconfig.json
+C:\dotnettraining\ExampleDemo\ExampleDemo\bin\Debug\net6.0\ExampleDemo.dll
+C:\dotnettraining\ExampleDemo\ExampleDemo\bin\Debug\net6.0\ExampleDemo.pdb
+C:\dotnettraining\ExampleDemo\ExampleDemo\obj\Debug\net6.0\ExampleDemo.dll
+C:\dotnettraining\ExampleDemo\ExampleDemo\obj\Debug\net6.0\refint\ExampleDemo.dll
+C:\dotnettraining\ExampleDemo\ExampleDemo\obj\Debug\net6.0\ExampleDemo.pdb
+C:\dotnettraining\ExampleDemo\ExampleDemo\obj\Debug\net6.0\ExampleDemo.genruntimeconfig.cache
+C:\dotnettraining\ExampleDemo\ExampleDemo\obj\Debug\net6.0\ref\ExampleDemo.dll
