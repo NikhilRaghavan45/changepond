@@ -1,0 +1,168 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+
+namespace FileLinesExample
+{
+    class Program
+    {
+        static void Main()
+        {
+
+            string filePath = @"D:\Training\ChangePond\dotnet\dog.txt";
+            FileInfo fileInfo = new FileInfo(filePath);
+
+            //FileStream fileStream = new FileStream(filePath, FileMode.Create, FileAccess.Write);
+            //FileStream fileStream = File.Create(filePath);
+            //FileStream fileStream = File.Open(filePath, FileMode.Create, FileAccess.Write);
+            //FileStream fileStream = File.OpenWrite(filePath);
+            //FileStream fileStream = fileInfo.Create();
+            FileStream fileStream = fileInfo.Open( FileMode.Create, FileAccess.Write);
+            //FileStream fileStream = fileInfo.OpenWrite();
+
+            //create content
+            string content = "Dog is one of the domestic animal.";
+            byte[] bytes = System.Text.Encoding.ASCII.GetBytes(content);
+
+            //Write
+            fileStream.Write(bytes, 0, bytes.Length);
+            //some work here
+            string content2 = "other text here";
+            byte[] bytes2 = System.Text.Encoding.ASCII.GetBytes(content2);
+            fileStream.Write(bytes2,0 , bytes2.Length);
+
+            fileStream.Close();
+            Console.WriteLine("dog.txt created");
+
+
+            //collection
+            List<string> asia = new List<string>() { "Russia", "China", "India" };
+
+            //file path
+            //string filePath = @"D:\Training\ChangePond\dotnet\asia.txt";
+
+            //WriteAllLines
+            //File.WriteAllLines(filePath, asia);
+            //Console.WriteLine("asia.txt created");
+
+            //ReadAllLines
+            //string[] existingContent = File.ReadAllLines(filePath);
+            /*foreach (string line in existingContent)
+            {
+                Console.WriteLine(line);
+            }*/
+
+            Console.ReadKey();
+        }
+    }
+}
+
+
+//using System;
+//using System.IO;
+//using System.Text.RegularExpressions;
+//using ClassLibrary1;
+
+//namespace ValueTupleExample
+//{
+
+//    class Person
+//    {   public string PersonName { get; set; }
+//        public DateTime DateOfBirth { get; set; }
+//    }
+//    class Program
+//    {
+//        static void Main()
+//        {
+//            string filePath = @"D:\Training\ChangePond\dotnet\India.txt", filePath2 = @"D:\Training\ChangePond\dotnet\India2.txt", filePath3 = @"D:\Training\ChangePond\another.txt";
+
+//            File.Create(filePath).Close();
+//            Console.WriteLine("India.txt created");
+
+//            bool exists = File.Exists(filePath);
+//            if (exists)
+//            {
+//                //File.Copy(filePath, filePath2);
+//                //Console.WriteLine("Copied India.txt to India2.txt");
+
+//                //File.Move(filePath2, filePath3);
+//                //Console.WriteLine("Moved India2.txt to another.txt");
+
+//                File.Delete(filePath3);
+//                Console.WriteLine("another.txt deleted");
+//            }
+//            else
+//            {
+//                Console.WriteLine("File not found");
+//            }
+
+
+
+
+
+
+//            //int rem;
+//            //double quo = Math.DivRem(10, 3, out rem);
+//            //Console.WriteLine("Quotient: " + quo + ", Remainder: " + rem); //3 and 1
+
+//            //Regex regex = new Regex("^[0-9 ]*$");
+//            //Console.WriteLine("Enter a name: ");
+//            //string inputValue = Console.ReadLine();
+//            //bool result = regex.IsMatch(inputValue);
+//            //Console.WriteLine(result);
+//            //if (result == true)
+//            //{
+//            //    Console.WriteLine("Valid name");
+//            //}
+//            //else
+//            //{
+//            //    Console.WriteLine("Invalid name");
+//            //}
+
+//            // Person person1 = new Person();
+//            //    person1.PersonName = "Miller";
+//            //    person1.DateOfBirth = DateTime.Parse("2023-12-01 11:59:59.999 am");
+//            //    Console.WriteLine(person1.DateOfBirth.ToString());
+//            //    Console.WriteLine("Day " + person1.DateOfBirth.Day);
+//            //    Console.WriteLine("Month " + person1.DateOfBirth.Month);
+//            //    Console.WriteLine("Year " + person1.DateOfBirth.Year);
+//            //    Console.WriteLine("Hours " + person1.DateOfBirth.Hour);
+//            //    Console.WriteLine("Minutes " + person1.DateOfBirth.Minute);
+//            //    Console.WriteLine("Seconds " + person1.DateOfBirth.Second);
+//            //    Console.WriteLine("Milliseconds " + person1.DateOfBirth.Millisecond);
+//            //    Console.WriteLine("Day of week " + person1.DateOfBirth.DayOfWeek);
+//            //    Console.WriteLine("Day of week Int " + (int)person1.DateOfBirth.DayOfWeek);
+//            //    Console.WriteLine("Day of year " + person1.DateOfBirth.DayOfYear);
+
+//            //DateTime dt = DateTime.Now;
+//            //Console.WriteLine(dt.ToString());
+
+//            //DateTime dt = DateTime.Parse("2022-01-01 12:00 am");
+//            //DateTime dt_after_10_days = dt.AddDays(10);
+//            //Console.WriteLine("After 10 days: " + dt_after_10_days);
+//            //DateTime dt_before_10_days = dt.AddDays(-10);
+//            //Console.WriteLine("Before 10 days: " + dt_before_10_days);
+
+//            //DateTime dt_after_20_months_and_5_days = dt.AddMonths(20).AddDays(5);
+//            //Console.WriteLine("After 20 months and 5 days: " + dt_after_20_months_and_5_days);
+
+
+//            Console.ReadKey();
+
+
+
+
+
+//            ////create object
+//            //Customer customer = new Customer();
+//            ////get details
+//            //(int customerID, _, string email)   = customer.GetCustomerDetails();
+//            //Console.WriteLine(customerID);
+//            ////Console.WriteLine(customerName);
+//            //Console.WriteLine(email);
+//            //(_, string customerName, _) = customer.GetCustomerDetails();
+//            //Console.WriteLine(customerName);
+//            //Console.ReadKey();
+//        }
+//    }
+//}
