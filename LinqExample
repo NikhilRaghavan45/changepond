@@ -1,0 +1,128 @@
+using System.Collections.Generic;
+using System.Linq;
+
+
+public class Employee
+{ 
+    public string Name { get; set; }
+
+    public int EmpId { get; set; }
+
+    public string Job { get; set; }
+
+    public string City { get; set; }
+
+    public int Salary { get; set; }
+
+
+    
+}
+
+public class Managers
+{
+    public string mgrName { get; set; }
+}
+
+internal class Program
+{
+    private static void Main(string[] args)
+    {
+        //List<int> scores = new List<int> { 100, 120, 200, 264, 59, 88, 67, 0, 17 };
+        //List<int> results=new List<int>();
+        //results=(from score in scores where(score%2==0)select score).ToList();  
+        //foreach(int score in results)
+        //{
+        //    Console.WriteLine(score);
+        //}
+
+
+        List<Employee> list = new List<Employee>()
+        {
+            new Employee() {EmpId=101,Name="Nikhil",Job="CEO",City="Chennai",Salary=50000},
+            new Employee() {EmpId=102,Name="Jack",Job="Developer",City="bangalore",Salary=500},
+            new Employee() {EmpId=103,Name="Henry",Job="Manager",City="mumbai",Salary=400},
+            new Employee() {EmpId=104,Name="William",Job="Analyst",City="pune",Salary=300},
+            new Employee() {EmpId=105,Name="Alexa",Job="Designer",City="kolkata",Salary=20000},
+            new Employee() {EmpId=106,Name="Boss",Job="Manager",City="hyderabad",Salary=10000},
+        };
+
+        //var result = list.Where(emp => emp.Job == "Manager");
+
+        //IEnumerable<Employee> result = list.Where(emp => emp.City == "Chennai");
+        //IOrderedEnumerable<Employee> result = list.OrderBy(emp => emp.Name);
+        //IOrderedEnumerable<Employee> result = list.OrderBy(emp => emp.Salary);
+        //IOrderedEnumerable<Employee> result =list.OrderByDescending(emp=>emp.Job).ThenBy(emp=>emp.City);
+        //IOrderedEnumerable<Employee> result = list.OrderByDescending(emp => emp.Salary).ThenByDescending(emp => emp.City);
+        //foreach(Employee emp in result)
+        //{
+        //    Console.WriteLine(emp.EmpId+"  "+emp.Name+"  "+emp.Job+"  "+emp.City);
+
+        //}
+
+        //var result = list.Where(emp => emp.Job == "Manager").ToList();
+        //Console.WriteLine(result[0].Name);
+
+        // Employee firstManager = list.First(emp => emp.Job == "Manager");
+
+        //Employee firstManager = list.FirstOrDefault(emp => emp.Job == "Manager");
+
+        //if (firstManager != null)
+        //{
+        //    Console.WriteLine(firstManager.Name + " is a " + firstManager.Job);
+        //}
+        //else
+        //{
+        //    Console.WriteLine("Invalid Job");
+        //}
+
+        //var result = list.Where(emp => emp.Job == "Manager").ToList();
+        //Console.WriteLine(result[result.Count-1].Name);
+
+
+        //Employee LastManager = list.LastOrDefault(emp => emp.Job == "Manager");
+
+        //if (LastManager != null)
+        //{
+        //    Console.WriteLine(LastManager.Name + " is a " + LastManager.Job);
+        //}
+        //else
+        //{
+        //    Console.WriteLine("Invalid Job");
+        //}
+
+        //Employee result = list.Where(emp => emp.Salary>=10000).ElementAt(2);
+        //Console.WriteLine(result.Name + " " + result.Salary);
+
+        //Employee resultN = list.Where(emp => emp.Salary >= 10000).ElementAtOrDefault(2);
+        //Console.WriteLine(resultN.Name + " " + resultN.Salary);
+
+
+        //Employee resultEmp = list.Single(emp => emp.EmpId == 102);
+        //Console.WriteLine(resultEmp.Name + " has id " + resultEmp.EmpId);
+
+
+        //double min = list.Min(emp => emp.Salary);
+        //double max = list.Max(emp => emp.Salary);
+        //double avg = list.Average(emp => emp.Salary);
+        //double sum = list.Sum(emp => emp.Salary);
+        //double cnt = list.Count;
+
+
+        //Console.WriteLine("Min " + min);
+        //Console.WriteLine("Max " + max);
+        //Console.WriteLine("Average " + avg);
+        //Console.WriteLine("Sum " + sum);
+        //Console.WriteLine("Count " + cnt);
+
+
+        //var resultemp = list.Where(emp => emp.Job == "Manager").ToList();
+
+        //List<Managers> result = resultemp.Select(emp => new Managers() { mgrName = emp.Name }).ToList();
+
+        //foreach(Managers manager in result)
+        //{
+        //    Console.WriteLine(manager.mgrName);
+        //}
+
+    }
+}
