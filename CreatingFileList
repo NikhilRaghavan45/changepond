@@ -1,0 +1,22 @@
+using System.IO;
+using System.Security.Cryptography;
+
+internal class Program
+{
+    
+    private static void Main(string[] args)
+    {
+        List<string> list = new List<string>() { "Russia", "India", "australia" };
+        string filepath = @"C:\dotnettraining\asia.txt";
+        File.WriteAllLines(filepath, list);
+
+        string[] content=File.ReadAllLines(filepath);
+        foreach(string line in content)
+        {
+            Console.WriteLine(line);
+        }
+
+
+
+    }
+}
