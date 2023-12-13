@@ -1,0 +1,26 @@
+using System.IO;
+using System.Security.Cryptography;
+
+internal class Program
+{
+    
+    private static void Main(string[] args)
+    {
+        //FileStream fwrite = new FileStream(@"C:\dotnettraining\nikhil.txt", FileMode.Create, FileAccess.Write);
+        //string content = "hi Nikhil here";
+        //byte[] bytes=System.Text.Encoding.ASCII.GetBytes(content);
+        //fwrite.Write(bytes, 0, bytes.Length);
+        //fwrite.Close();
+
+        //FileStream fwrite=new FileStream(@"C:\dotnettraining\dotnet.txt",FileMode.Create,FileAccess.Write);
+        //string content = "hi nikhil here";
+        //string content2 = "next";
+        //byte[] bytes=System.Text.Encoding.UTF8.GetBytes(content);
+        //byte[] bytes1 = System.Text.Encoding.UTF8.GetBytes(content2);
+        //fwrite.Write(bytes,0,bytes.Length);
+        //fwrite.Write(bytes1, 0, bytes1.Length);
+        //fwrite.Close();
+
+        
+    }
+}
