@@ -1,0 +1,166 @@
+·        
+Write a program in C# to find the positive
+numbers from a list of numbers using two where conditions in LINQ Query
+
+
+List<int> list = new List<int>() { 1, 3, 6, 8, -1, -2, -3, 10 };
+List<int> results = new List<int>();
+results=(from num in list where num>0 where num<=10 select num).ToList();
+foreach(int item in results)
+{
+    Console.WriteLine(item);
+}
+
+
+·        
+Write a program in C# to display the name of the
+days of a week in LINQ Query
+
+string[] week = { "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" };
+List<string> results = new List<string>();
+results = (from days in week  select days).ToList();
+foreach (string item in results)
+{
+    Console.WriteLine(item);
+}
+
+
+·        
+Write a program in C# to create a list of
+numbers and display the numbers greater than 20 in LINQ Query
+
+ List<int> list = new List<int> { 55,200,740,76,0,9,7,10,15,99 };
+ List<int> results = new List<int>();
+ results = (from num in list where num > 20 select num).ToList();
+ foreach (int item in results)
+ {
+     Console.WriteLine(item);
+ }
+
+·        
+Write a program in C# to find the number of an
+array and the square of each number in LINQ Query
+
+var arr = new[] {3, 4, 5, 6, 7, 2, 10};
+var square = (from int num in arr  let squarenum = num * num where squarenum > 20 select new { num,squarenum });
+foreach(var items in square)
+{
+    Console.WriteLine(items);
+
+}
+
+
+·        
+Write a program in C# to display the top n-th
+records in LINQ Query
+
+
+ List<int> numbers = new List<int>() { 55, 200, 740, 76, 0, 9, 7, 10, 15, 99 };
+ int n = 2;
+ var result = numbers.OrderByDescending(x => x).Take(n);
+ foreach (int i in result)
+ {
+     Console.WriteLine(i);
+ }
+
+·        
+Write a program in C# to display the number and
+frequency of number from given array in LINQ Query
+int[] num = { 1, 3, 4, 1, 4, 2, 3, 5, 6, 2, 7, 8, 8 };
+var numFreq = num.GroupBy(x => x).Select(g => new { Number = g.Key, Frequency = g.Count() });
+foreach (var item in numFreq)
+{
+    Console.WriteLine($"Number: {item.Number}, Frequency: {item.Frequency}");
+}
+
+
+·        
+Write a program in C# to display the characters
+and frequency of character from given string in LINQ Query
+
+
+string input = "Nikhil here";
+var inputfreq = input.GroupBy(x => x).Select(g => new {Character=g.Key,Frequency=g.Count()});
+foreach(var item in inputfreq)
+{
+  Console.WriteLine($"Character:{item.Character},Frequency:{item.Frequency}");
+}
+
+
+·        
+Write a program in C# to find the uppercase
+words in a string in LINQ Query
+ string inputString = "hi iam NIKHIL";
+ var upperC = inputString.Split(' ').Where(word =>word.All(char.IsUpper));
+ foreach (var word in upperC)
+ {
+     Console.WriteLine($"Uppercase in the string is:{word}");
+ }
+
+
+·        
+Write a program in C# to Remove Items from List
+using remove function by passing object in LINQ Query
+
+ List<string> list = new List<string>() { "v","e","n","k","y"};
+ var result = from n in list select n;
+ Console.WriteLine("Before removing the items");
+ foreach (var items in result)
+ {
+     Console.WriteLine(items);
+ }
+ string str = list.FirstOrDefault(ch => ch == "k");
+ list.Remove(str);
+ var result1=from y in list select y;
+ Console.WriteLine("After removing the items");
+ foreach (var items in result1)
+ {
+     Console.WriteLine(items);
+ }
+
+
+·        
+Write a program in C# to remove a range of items
+from a list by passing the start index and number of elements to remove in LINQ
+Query
+
+ List<string> String = new List<string>{"m", "n", "o", "p", "q"};
+ Console.WriteLine("list:");
+ foreach (var nchar in String)
+ {
+     Console.WriteLine("Char: {0}", nchar);
+ }
+ Console.WriteLine("\nlist after removing three items starting from the item index 1:");
+ String.RemoveRange(1, 3);
+ var result = from z in String select z;
+ foreach (var rChar in result)
+ {
+     Console.WriteLine("Char: {0}", rChar);
+ }
+
+
+·        
+Write a program in C# to generate a Cartesian
+Product of two sets in LINQ Query
+
+int[] set1 =  { 1, 2, 3 , 4};
+char[] set2 =  { 'A', 'B' ,'C' };
+var cartesianProduct = from item1 in set1 from item2 in set2 select new { item1, item2 };
+Console.WriteLine("Cartesian Product:");
+foreach (var pair in cartesianProduct)
+{
+    Console.WriteLine(pair);
+}
+
+
+·        
+Write a program in C# to arrange the distinct
+elements in the list in ascending order in LINQ Query
+
+ List<int> numbers = new List<int> {1, 2, 3, 4, 5, 6, 7, 1, 2, 3, 4, 5, 8, 0};
+ var dSortNum = numbers.Distinct().OrderBy(x => x);
+ Console.WriteLine("Distinct Elements in Ascending Order:");
+ foreach (var number in dSortNum)
+ {
+     Console.WriteLine(number);
+ }
