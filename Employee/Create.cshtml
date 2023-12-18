@@ -1,0 +1,41 @@
+﻿@model Employee
+@{
+    ViewData["Title"] = "Create Employee";
+}
+
+<h2>New Employee Form</h2>
+<hr color="blue"/>
+<form method="post">
+    <div style="padding:5px";>
+        <div style="margin-bottom:5px";>
+            <label asp-for="name">Employee Name: </label>
+            <input asp-for="name" />
+        </div>
+        <div style="margin-bottom:5px" ;>
+            <label asp-for="age">Employee Age:</label>
+            <input asp-for="age"/>
+        </div>
+        <div style="margin-bottom:5px" ;>
+            <label asp-for="salary">Employee Salary:</label>
+            <input asp-for="salary" />
+        </div>
+        <div style="margin-bottom:5px" ;>
+            <label asp-for="department">Employee Department:</label>
+            <select asp-for="department">
+                <option value="Development">Development</option>
+                <option value="HR">HR</option>
+                <option value="Engineering">Engineering</option>
+                <option value="Accounts">Accounts</option>
+            </select>
+        </div>
+        <div style="margin-bottom:5px" ;>
+            <label asp-for="gender">Employee Gender: </label>
+            <input type="radio" asp-for="gender" value="M"/> Male
+            <input type="radio" asp-for="gender" value="F" /> Female
+        </div>
+        <div style="margin-bottom:5px";>
+            <button type="submit">Add Employee</button>
+        </div>
+    </div>
+    
+</form>
