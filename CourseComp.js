@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import './External.css';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -35,51 +36,66 @@ const CourseComp = () => {
   }, [selectedCourse]);
 
   const handleFetchDetails = () => {
-    // Log selectedModule, selectedDate, and constructed URL
+    console.log('Selected Course:', selectedCourse);
     console.log('Selected Module:', selectedModule);
     console.log('Selected Date:', selectedDate);
 
+    const moduleId = selectedModule;
+
     const formattedDate = selectedDate ? selectedDate.toISOString().split('T')[0] : null;
-    const apiUrl = `https://localhost:7069/api/Course/GetStudents/${selectedModule}/${formattedDate}`;
+    const apiUrl = `https://localhost:7069/api/Course/GetStudents/${moduleId}/${formattedDate}`;
     console.log('API URL:', apiUrl);
 
-    // Fetch student details based on the selected module and date
-    if (selectedModule && selectedDate) {
+    if (selectedCourse && selectedModule && selectedDate) {
       axios.get(apiUrl)
         .then(response => {
           console.log('Fetched students:', response.data);
-
-          // Assuming the response.data is an array of FeesStructure
-          // If the structure is different, adjust this part accordingly
           const studentsData = response.data.map(student => ({
-            studentId: student.Regid,
-            studentName: student.SName,
-            attendanceStatus: '', // You can set the default value for attendance status here
+            studentId: student.regid,
+            studentName: student.sName,
+            courseId: student.cId,
+            courseName: student.cName,
+            POption: student.pOption,
+            ICount: student.iCount,
+            APay: student.aPay,
+            PAmount: student.pAmount,
+            PType: student.pType,
           }));
-
+          console.log('Fetched students:', studentsData);
           setStudents(studentsData);
+          setAttendance(studentsData.map(student => ({
+            SId: student.studentId,
+            SName: student.studentName,
+            Date: formattedDate,
+            Attendance: '', 
+          })));
         })
         .catch(error => console.error('Error fetching students:', error));
     }
   };
 
   const handleSaveAttendance = () => {
-    // Implement logic to save attendance
-    console.log('Attendance saved:', attendance);
+    if (attendance.length === 0) {
+      console.log('No attendance data to save.');
+      return;
+    }
+
+    axios.post('https://localhost:7069/api/Course/SaveAttendance', attendance)
+      .then(response => {
+        console.log('Attendance saved successfully:', response.data);
+      
+      })
+      .catch(error => console.error('Error saving attendance:', error));
   };
 
   const handleAttendanceChange = (studentId, status) => {
-    // Update the attendance state based on radio button selection
     const updatedAttendance = [...attendance];
-    const studentIndex = updatedAttendance.findIndex(student => student.studentId === studentId);
+    const studentIndex = updatedAttendance.findIndex(student => student.SId === studentId);
 
     if (studentIndex !== -1) {
-      updatedAttendance[studentIndex].attendanceStatus = status;
-    } else {
-      updatedAttendance.push({ studentId, attendanceStatus: status });
+      updatedAttendance[studentIndex].Attendance = status;
+      setAttendance(updatedAttendance);
     }
-
-    setAttendance(updatedAttendance);
   };
 
   return (
@@ -111,7 +127,7 @@ const CourseComp = () => {
           id="moduleDropdown"
           value={selectedModule}
           onChange={(e) => setSelectedModule(e.target.value)}
-          disabled={!selectedCourse} // Disable if no course selected
+          disabled={!selectedCourse} 
         >
           {modules.length === 0 ? (
             <option value="" disabled>No modules available</option>
@@ -134,58 +150,65 @@ const CourseComp = () => {
           selected={selectedDate}
           onChange={(date) => setSelectedDate(date)}
           dateFormat="MM/dd/yyyy"
-          disabled={!selectedModule} // Disable if no module selected
+          disabled={!selectedModule}
         />
       </div>
       <div>
-        <button onClick={handleFetchDetails}>Fetch Details</button>
-        {students.length > 0 && (
-          <div>
-            <h2>Student Details:</h2>
-            <table>
-              <thead>
-                <tr>
-                  <th>Student ID</th>
-                  <th>Student Name</th>
-                  <th>Date</th>
-                  <th>Attendance</th>
-                </tr>
-              </thead>
-              <tbody>
-                {students.map(student => (
-                  <tr key={student.studentId}>
-                    <td>{student.studentId}</td>
-                    <td>{student.studentName}</td>
-                    <td>
-                      <label>
-                        Present
-                        <input
-                          type="radio"
-                          name={`attendance_${student.studentId}`}
-                          value="Present"
-                          onChange={() => handleAttendanceChange(student.studentId, 'Present')}
-                        />
-                      </label>
-                      <label>
-                        Absent
-                        <input
-                          type="radio"
-                          name={`attendance_${student.studentId}`}
-                          value="Absent"
-                          onChange={() => handleAttendanceChange(student.studentId, 'Absent')}
-                        />
-                      </label>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-            <div>
-              <button onClick={handleSaveAttendance}>Save Attendance</button>
-            </div>
-          </div>
-        )}
+        <button onClick={handleFetchDetails} disabled={!selectedCourse || !selectedModule || !selectedDate}>
+          Fetch
+        </button>
       </div>
+      {students.length > 0 && (
+        <div>
+          <h2>Student Details:</h2>
+          <table className='attendance-table'>
+            <thead>
+              <tr>
+                <th>Student ID</th>
+                <th>Student Name</th>
+                <th>Date</th>
+                <th>Attendance</th>
+              </tr>
+            </thead>
+            <tbody>
+              {students.map(student => (
+                <tr key={student.studentId}>
+                  <td>{student.studentId}</td>
+                  <td>{student.studentName}</td>
+                  <td>{selectedDate ? selectedDate.toLocaleDateString('en-US') : 'No Date Selected'}</td>
+                  <td>
+                    <label>
+                      Present
+                      <input
+                        type="radio"
+                        name={`attendance_${student.studentId}`}
+                        value="P"
+                        onChange={() => handleAttendanceChange(student.studentId, 'P')}
+                        checked={attendance.some(a => a.SId === student.studentId && a.Attendance === 'P')}
+                      />
+                    </label>
+                    <label>
+                      Absent
+                      <input
+                        type="radio"
+                        name={`attendance_${student.studentId}`}
+                        value="A"
+                        onChange={() => handleAttendanceChange(student.studentId, 'A')}
+                        checked={attendance.some(a => a.SId === student.studentId && a.Attendance === 'A')}
+                      />
+                    </label>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <div>
+            <button onClick={handleSaveAttendance} disabled={attendance.length === 0}>
+              Save Attendance
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
