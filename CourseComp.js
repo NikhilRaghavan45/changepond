@@ -55,6 +55,8 @@ const CourseComp = () => {
             studentName: student.sName,
             courseId: student.cId,
             courseName: student.cName,
+            moduleId: student.mId, 
+            moduleName: student.mName,
             POption: student.pOption,
             ICount: student.iCount,
             APay: student.aPay,
@@ -68,6 +70,7 @@ const CourseComp = () => {
             SName: student.studentName,
             Date: formattedDate,
             Attendance: '', 
+            CName: student.courseName,
           })));
         })
         .catch(error => console.error('Error fetching students:', error));
