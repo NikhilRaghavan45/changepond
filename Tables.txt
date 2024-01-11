@@ -1,0 +1,64 @@
+CREATE TABLE [dbo].[Attendances] (
+    [Att_id]     INT          IDENTITY (1, 1) NOT NULL,
+    [SId]        INT          NOT NULL,
+    [SName]      VARCHAR (50) NOT NULL,
+    [Date]       DATETIME     NOT NULL,
+    [CName]      VARCHAR (50) NOT NULL,
+    [Attendance] CHAR (1)     NOT NULL
+);
+
+
+CREATE TABLE [dbo].[Course] (
+    [CId]          INT          IDENTITY (1, 1) NOT NULL,
+    [CName]        VARCHAR (50) NULL,
+    [CDuration]    INT          NOT NULL,
+    [StartDate]    DATE         NOT NULL,
+    [EndDate]      DATE         NOT NULL,
+    [Availability] VARCHAR (50) NOT NULL,
+    [CDescription] VARCHAR (50) NOT NULL,
+    [CPrequisite]  VARCHAR (50) NOT NULL,
+    [OutCome]      VARCHAR (50) NOT NULL
+);
+
+CREATE TABLE [dbo].[Employee] (
+    [Id]            INT          IDENTITY (1, 1) NOT NULL,
+    [Name]          VARCHAR (50) NULL,
+    [StartLocation] VARCHAR (50) NULL,
+    [EndLocation]   VARCHAR (50) NULL
+);
+
+CREATE TABLE [dbo].[FeesStructure] (
+    [Regid]   INT          IDENTITY (1, 1) NOT NULL,
+    [SName]   VARCHAR (50) NOT NULL,
+    [CId]     INT          NOT NULL,
+    [CName]   VARCHAR (50) NOT NULL,
+    [TCFees]  BIGINT       NOT NULL,
+    [POption] VARCHAR (50) NOT NULL,
+    [ICount]  INT          NOT NULL,
+    [APay]    BIGINT       NOT NULL,
+    [PAmount] BIGINT       NOT NULL,
+    [PType]   VARCHAR (50) NOT NULL
+);
+
+CREATE TABLE [dbo].[Module] (
+    [MId]   INT          IDENTITY (1, 1) NOT NULL,
+    [MName] VARCHAR (50) NULL,
+    [CId]   INT          NOT NULL
+);
+
+
+
+CREATE TABLE [dbo].[Person] (
+    [Id]   INT          IDENTITY (1, 1) NOT NULL,
+    [Name] VARCHAR (50) NOT NULL,
+    [Job]  VARCHAR (50) NOT NULL
+);
+
+
+CREATE TABLE [dbo].[Table] (
+    [Id]       INT          IDENTITY (1, 1) NOT NULL,
+    [Name]     VARCHAR (50) NOT NULL,
+    [Price]    MONEY        NOT NULL,
+    [Quantity] INT          NOT NULL,
+    [AddedOn]  DATE         NOT NULL
+);
